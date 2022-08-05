@@ -15,7 +15,11 @@ public class Main {
         
         do {
             Scanner scan = new Scanner(System.in);
-    
+            System.out.println("=============== CONFIG ===============");
+            System.out.println("radius: \t" + Config.INSTANCE.radius);
+            System.out.println("width: \t\t" + Config.INSTANCE.wallpaperWidth);
+            System.out.println("height: \t" + Config.INSTANCE.wallpaperHeight);
+            System.out.println("=============== CONFIG ===============");
             System.out.print("输入图像路径：");
             String[] params = new String[] {scan.nextLine()};
             
@@ -25,9 +29,9 @@ public class Main {
             
             
             File outPath = IOUtil.appendFilename(new File(imagePath.getParent(),
-                    IOUtil.getUrlFilename(imagePath.getName())), "_BLUR");
+                    IOUtil.getUrlFilename(imagePath.getName())), "_BLUR" + Config.INSTANCE.radius);
             System.out.println("正在处理...");
-            System.out.println(outPath);
+//            System.out.println(outPath);
             BufferedImage inputImage = ImageIO.read(imagePath);
             
             BufferedImage backgroundImage = false//params.length > 1
